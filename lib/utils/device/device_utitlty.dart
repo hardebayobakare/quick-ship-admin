@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:quick_shop_admin/utils/constants/sizes.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 class DeviceUtils {
@@ -110,5 +111,17 @@ class DeviceUtils {
     } else {
       throw 'Could not launch $url';
     }
+  }
+
+  static bool isDesktopScreen(BuildContext context) {
+    return MediaQuery.of(context).size.width >= CustomSizes.desktopScreenSize;
+  }
+
+  static bool isTabletScreen(BuildContext context) {
+    return MediaQuery.of(context).size.width >= CustomSizes.tabletScreenSize && MediaQuery.of(context).size.width < CustomSizes.desktopScreenSize;
+  }
+
+  static bool isMobileScreen(BuildContext context) {
+    return MediaQuery.of(context).size.width < CustomSizes.tabletScreenSize;
   }
 }

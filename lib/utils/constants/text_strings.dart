@@ -2,6 +2,7 @@ class CustomTextStrings {
   CustomTextStrings._();
 
   // -- Global Texts
+  static const String appName = 'Quick Shop';
 
   // -- OnBoarding Texts
   static const String onBoardingTitle1 = 'Welcome to Quick Shop';
