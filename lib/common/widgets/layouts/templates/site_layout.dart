@@ -4,6 +4,7 @@ import 'package:quick_shop_admin/common/widgets/responsive/responsive_design.dar
 import 'package:quick_shop_admin/common/widgets/responsive/screens/desktop_layout.dart';
 import 'package:quick_shop_admin/common/widgets/responsive/screens/mobile_layout.dart';
 import 'package:quick_shop_admin/common/widgets/responsive/screens/tablet_layout.dart';
+import 'package:quick_shop_admin/utils/constants/colors.dart';
 
 class CustomSiteLayout extends StatelessWidget {
   const CustomSiteLayout({
@@ -22,6 +23,7 @@ class CustomSiteLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: CustomColors.lightGrey,
       body: CustomResponsiveWidget(
         desktop: useLayout ? DesktopLayout(body: desktop) : desktop ?? Container(), 
         tablet: useLayout ? TabletLayout(body: tablet ?? desktop) : tablet ?? desktop ?? Container(), 

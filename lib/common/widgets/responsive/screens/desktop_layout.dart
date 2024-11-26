@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quick_shop_admin/common/widgets/layouts/headers/header.dart';
+import 'package:quick_shop_admin/common/widgets/layouts/sidebars/sidebar.dart';
 
 class DesktopLayout extends StatelessWidget {
   DesktopLayout({
@@ -15,7 +16,7 @@ class DesktopLayout extends StatelessWidget {
     return Scaffold(
       body: Row(
         children: [
-          const Expanded(child: Drawer()),
+          const Expanded(child: CustomSideBar()),
           Expanded(
             flex: 5,
             child: Column(
