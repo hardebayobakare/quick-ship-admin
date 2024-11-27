@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:quick_shop_admin/common/widgets/rounded_image.dart';
+import 'package:quick_shop_admin/features/personalization/controllers/user_controller.dart';
 import 'package:quick_shop_admin/utils/constants/colors.dart';
 import 'package:quick_shop_admin/utils/constants/enums.dart';
 import 'package:quick_shop_admin/utils/constants/image_strings.dart';
 import 'package:quick_shop_admin/utils/constants/sizes.dart';
 import 'package:quick_shop_admin/utils/device/device_utitlty.dart';
+import 'package:quick_shop_admin/utils/loaders/shimmer.dart';
 
 class CustomHeader extends StatelessWidget implements PreferredSizeWidget {
   const CustomHeader({
@@ -18,6 +21,8 @@ class CustomHeader extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = UserController.instance;
+    final user = controller.user.value;
     return Container(
       decoration: const BoxDecoration(
         color: CustomColors.white,
@@ -62,24 +67,32 @@ class CustomHeader extends StatelessWidget implements PreferredSizeWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const CustomRoundedImage(
-                width: 40,
-                padding: 2,
-                height: 40,
-                imageType: ImageType.asset, 
-                image: CustomImages.user
+              Obx(
+                () => CustomRoundedImage(
+                  width: 40,
+                  padding: 2,
+                  height: 40,
+                  imageType: user.profilePicture.isNotEmpty ? ImageType.network : ImageType.asset, 
+                  image: user.profilePicture.isNotEmpty ? user.profilePicture : CustomImages.user
+                ),
               ),
               const SizedBox(width: CustomSizes.sm),
 
               // Name and Email
               if(!DeviceUtils.isMobileScreen(context))
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text('Adebayo Bakare', style: Theme.of(context).textTheme.titleLarge),
-                    Text('support@binfotech.ca', style: Theme.of(context).textTheme.labelMedium),
-                  ],
+                Obx(
+                  () => Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      controller.isLoading.value 
+                        ? const CustomShimmerEffect(width: 50, height: 13)
+                        : Text(user.fullName, style: Theme.of(context).textTheme.titleLarge),
+                      controller.isLoading.value 
+                        ? const CustomShimmerEffect(width: 50, height: 13)
+                        : Text(user.email, style: Theme.of(context).textTheme.labelMedium),
+                    ],
+                  ),
                 )
             ],
           )
