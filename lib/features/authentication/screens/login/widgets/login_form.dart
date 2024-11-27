@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:quick_shop_admin/routes/route.dart';
 import 'package:quick_shop_admin/utils/constants/sizes.dart';
 import 'package:quick_shop_admin/utils/constants/text_strings.dart';
 
@@ -38,7 +40,7 @@ class CustomLoginForm extends StatelessWidget {
                 Checkbox(value: false, onChanged: (value) {}),
                 Text(CustomTextStrings.rememberMe, style: Theme.of(context).textTheme.bodyMedium),
                 const Spacer(),
-                TextButton(onPressed: () {}, child: Text(CustomTextStrings.forgotPassword, style: Theme.of(context).textTheme.bodyMedium)),
+                TextButton(onPressed: () => Get.toNamed(CustomRoutes.forgetPassword), child: Text(CustomTextStrings.forgotPassword, style: Theme.of(context).textTheme.bodyMedium)),
               ],
             ),
 
