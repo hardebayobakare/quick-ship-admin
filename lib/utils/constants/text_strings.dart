@@ -1,6 +1,10 @@
 class CustomTextStrings {
   CustomTextStrings._();
 
+  // -- Admin Default Authentication
+  static const String adminEmail = 'admin@binfotech.ca';
+  static const String adminPassword = 'SteaREvAL';
+
   // -- Global Texts
   static const String appName = 'Quick Shop';
 
@@ -37,7 +41,10 @@ class CustomTextStrings {
   static const String resendEmail = 'Resend Email';
   static const String resendEmailIn = 'Resend email in';
   static const String submit = 'Submit';
+  static const String registerAdmin = 'Register Admin';
+  static const String registeringAdmin = 'Registering Admin Account...';
   static const String done = 'Done';
+  static const String signingIn = 'Signing you in...';
   static const String loggedIn = 'You have successfully logged in';
   static const String sendingEmail = 'Sending password reset email...';
   static const String deleteAccount = 'Delete Account';
@@ -69,6 +76,8 @@ class CustomTextStrings {
   static const String yourAccountCreatedSubtitle = 'Welcome to Quick Shop. Your account has been created successfully.';
   static const String changeYourPasswordTitle = 'Password Reset Email Sent';
   static const String changeYourPasswordSubtitle = 'Your account security is important to us. We have sent a secure link to your email address. Please follow the instructions in the email to reset your password.';
+  static const String adminRegisterd = 'Admin have been registered successfully';
+  static const String notAdmin = 'You are not an admin. Please login with an admin account.';
 
 
   // -- Home
@@ -149,6 +158,7 @@ class CustomTextStrings {
   static const String paymentSuccessful = 'Payment Successful';
   static const String noOrders = 'No orders available';
   static const String unavailable = 'Unavailable';
+  static const String notAuthorized = 'Not Authorized';
 
 
 

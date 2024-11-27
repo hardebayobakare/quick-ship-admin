@@ -7,3 +7,5 @@ enum OrderStatus { pending, processing, shipped, delivered, cancelled }
 enum PaymentMethod { paypal, googlePay, applePay, visa, masterCard, paystack, razorPay, paytm, cash, card, bankTransfer }
 
 enum ImageType { network, asset, file, memory }
+
+enum AppRole { admin, user }
