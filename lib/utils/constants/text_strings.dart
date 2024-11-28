@@ -41,6 +41,7 @@ class CustomTextStrings {
   static const String resendEmail = 'Resend Email';
   static const String resendEmailIn = 'Resend email in';
   static const String submit = 'Submit';
+  static const String search = 'Search';
   static const String registerAdmin = 'Register Admin';
   static const String registeringAdmin = 'Registering Admin Account...';
   static const String done = 'Done';
@@ -58,6 +59,7 @@ class CustomTextStrings {
   static const String state = 'State';
   static const String country = 'Country';
   static const String save = 'Save';
+  static const String sales = 'Sales';
 
 
   // -- Authentication Heading Texts
@@ -119,6 +121,7 @@ class CustomTextStrings {
   static const String products = 'Products';
   static const String orders = 'Orders';
   static const String order = 'Order';
+  static const String dashboard = 'Dashboard';
   static const String youMightLike = 'You might like';
   static const String addToWishlist = 'Product has been added to your wishlist';
   static const String removeFromWishlist = 'Product has been removed from your wishlist';
@@ -159,6 +162,11 @@ class CustomTextStrings {
   static const String noOrders = 'No orders available';
   static const String unavailable = 'Unavailable';
   static const String notAuthorized = 'Not Authorized';
+  static const String nothingFound = 'Nothing Found';
+  static const String averageOrder = 'Average Order';
+  static const String totalOrder = 'Total Order';
+  static const String visitors = 'Visitors';
+  static const String weeklySales = 'Weekly Sales';
 
 
 
@@ -176,4 +184,6 @@ class CustomTextStrings {
 
   // Local Storage keys
   static const String cartItems = 'CARTITEMS';
+
+
 }

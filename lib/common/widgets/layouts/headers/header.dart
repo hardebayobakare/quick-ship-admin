@@ -67,15 +67,14 @@ class CustomHeader extends StatelessWidget implements PreferredSizeWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Obx(
-                () => CustomRoundedImage(
-                  width: 40,
-                  padding: 2,
-                  height: 40,
-                  imageType: user.profilePicture.isNotEmpty ? ImageType.network : ImageType.asset, 
-                  image: user.profilePicture.isNotEmpty ? user.profilePicture : CustomImages.user
-                ),
+              CustomRoundedImage(
+                width: 40,
+                padding: 2,
+                height: 40,
+                imageType: user.profilePicture.isNotEmpty ? ImageType.network : ImageType.asset, 
+                image: user.profilePicture.isNotEmpty ? user.profilePicture : CustomImages.user
               ),
+            
               const SizedBox(width: CustomSizes.sm),
 
               // Name and Email

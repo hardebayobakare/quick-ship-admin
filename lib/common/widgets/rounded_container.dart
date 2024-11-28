@@ -10,11 +10,13 @@ class CustomRoundedContainer extends StatelessWidget {
     this.height,
     this.width,
     this.margin,
-    this.padding,
+    this.padding = const EdgeInsets.all(CustomSizes.md),
     this.showborder = false,
+    this.boxShadow = true,
     this.radius = CustomSizes.cardRadiusLg,
     this.backgroundColor = CustomColors.white,
     this.borderColor = CustomColors.borderPrimary,
+    this.onTap,
   });
 
   final double? width;
@@ -26,6 +28,8 @@ class CustomRoundedContainer extends StatelessWidget {
   final Color borderColor;
   final EdgeInsetsGeometry? margin;
   final EdgeInsetsGeometry? padding;
+  final bool boxShadow;
+  final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -38,6 +42,15 @@ class CustomRoundedContainer extends StatelessWidget {
         color: backgroundColor,
         borderRadius: BorderRadius.circular(radius),
         border: showborder ? Border.all(color: borderColor) : null,
+        boxShadow: [
+          if (boxShadow)
+            BoxShadow(
+              color: CustomColors.grey.withOpacity(0.1),
+              spreadRadius: 5,
+              blurRadius: 8,
+              offset: const Offset(0, 3),
+            )
+        ]
       ),
       child: child,
     );

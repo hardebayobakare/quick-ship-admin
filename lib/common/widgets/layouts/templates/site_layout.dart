@@ -23,7 +23,7 @@ class CustomSiteLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: CustomColors.lightGrey,
+      backgroundColor: CustomColors.darkerGrey,
       body: CustomResponsiveWidget(
         desktop: useLayout ? DesktopLayout(body: desktop) : desktop ?? Container(), 
         tablet: useLayout ? TabletLayout(body: tablet ?? desktop) : tablet ?? desktop ?? Container(), 

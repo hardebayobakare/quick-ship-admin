@@ -23,6 +23,8 @@ dependencies:
 
   # Web Packages
   url_strategy: ^0.3.0
+  data_table_2: ^2.5.16
+  fl_chart: ^0.69.2
 
   # Icons
   cupertino_icons: ^1.0.8

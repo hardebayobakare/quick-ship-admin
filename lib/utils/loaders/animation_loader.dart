@@ -20,6 +20,9 @@ class CustomAnimationLoaderWidget extends StatelessWidget {
     this.showAction = false,
     this.actionText,
     this.onActionPressed,
+    this.height,
+    this.width,
+    this.style,
   });
 
   final String text;
@@ -27,6 +30,9 @@ class CustomAnimationLoaderWidget extends StatelessWidget {
   final bool showAction;
   final String? actionText;
   final VoidCallback? onActionPressed;
+  final TextStyle? style;
+  final double? height;
+  final double? width;
 
   @override
   Widget build(BuildContext context) {
@@ -36,12 +42,12 @@ class CustomAnimationLoaderWidget extends StatelessWidget {
         children: [
           ConstrainedBox(
             constraints: const BoxConstraints(maxHeight: 300),
-            child: Lottie.asset(animation, width: MediaQuery.of(context).size.width * 0.8)
+            child: Lottie.asset(animation, width: width, height: height ?? MediaQuery.of(context).size.height * 0.5),
           ),
           const SizedBox(height: CustomSizes.defaultSpace),
           Text(
             text, 
-            style: Theme.of(context).textTheme.bodyMedium, 
+            style: style ?? Theme.of(context).textTheme.bodyMedium, 
             textAlign: TextAlign.center
           ),
           const SizedBox(height: CustomSizes.defaultSpace),

@@ -34,7 +34,8 @@ class CustomSideBar extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Text('Menu', style: Theme.of(context).textTheme.bodySmall!.apply(letterSpacingDelta: 1.2)),
+                      Center(child: Text('MENU', style: Theme.of(context).textTheme.bodySmall!.apply(letterSpacingDelta: 1.2))),
+                      const SizedBox(height: CustomSizes.spaceBtwItems),
 
                       //Menu Items
                       const CustomMenuItem(icon: Iconsax.status, title: 'Dashboard', route: CustomRoutes.dashboard),                      

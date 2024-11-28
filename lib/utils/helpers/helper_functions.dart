@@ -5,6 +5,12 @@ import 'package:intl/intl.dart';
 class CustomHelperFunctions {
   CustomHelperFunctions._();
 
+  static DateTime getStartofWeek(DateTime date) {
+    final int daysUntilMonday = date.weekday - 1;
+    final DateTime startOfWeek = date.subtract(Duration(days: daysUntilMonday));
+    return DateTime(startOfWeek.year, startOfWeek.month, startOfWeek.day, 0, 0, 0, 0, 0);
+  }
+
   static Color? getColor(String value){
     if (value == 'Green'){
       return Colors.green;
