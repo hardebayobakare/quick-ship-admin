@@ -121,6 +121,7 @@ class CustomTextStrings {
   static const String products = 'Products';
   static const String orders = 'Orders';
   static const String order = 'Order';
+  static const String recentOrders = 'Recent Orders';
   static const String orderStatus = 'Order Status';
   static const String dashboard = 'Dashboard';
   static const String youMightLike = 'You might like';

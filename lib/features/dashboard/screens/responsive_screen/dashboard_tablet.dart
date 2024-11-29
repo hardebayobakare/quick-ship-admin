@@ -3,6 +3,7 @@ import 'package:quick_shop_admin/common/widgets/rounded_container.dart';
 import 'package:quick_shop_admin/features/dashboard/screens/widgets/dashboard_card.dart';
 import 'package:quick_shop_admin/features/dashboard/screens/widgets/order_status.dart';
 import 'package:quick_shop_admin/features/dashboard/screens/widgets/weekly_sales.dart';
+import 'package:quick_shop_admin/features/dashboard/table/data_table.dart';
 import 'package:quick_shop_admin/utils/constants/colors.dart';
 import 'package:quick_shop_admin/utils/constants/sizes.dart';
 import 'package:quick_shop_admin/utils/constants/text_strings.dart';
@@ -49,7 +50,16 @@ class DashboardTabletScreen extends StatelessWidget {
             const SizedBox(height: CustomSizes.spaceBtwSections),
 
             // Orders
-            const CustomRoundedContainer(),
+            CustomRoundedContainer(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(CustomTextStrings.recentOrders, style: Theme.of(context).textTheme.headlineSmall),
+                  const SizedBox(height: CustomSizes.spaceBtwSections),
+                  const DashboardOrderTable(),
+                ],
+              ),
+            ),  
             const SizedBox(height: CustomSizes.spaceBtwSections),
 
             // Pie Chart

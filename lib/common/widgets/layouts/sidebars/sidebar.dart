@@ -38,7 +38,15 @@ class CustomSideBar extends StatelessWidget {
                       const SizedBox(height: CustomSizes.spaceBtwItems),
 
                       //Menu Items
-                      const CustomMenuItem(icon: Iconsax.status, title: 'Dashboard', route: CustomRoutes.dashboard),                      
+                      const CustomMenuItem(icon: Iconsax.status, title: 'Dashboard', route: CustomRoutes.dashboard),
+                      const CustomMenuItem(icon: Iconsax.gallery, title: 'Media', route: CustomRoutes.media),  
+                      const CustomMenuItem(icon: Iconsax.quote_up_square, title: 'Banners', route: CustomRoutes.banners),
+                      const CustomMenuItem(icon: Iconsax.bag_2, title: 'Products', route: CustomRoutes.products),
+                      const CustomMenuItem(icon: Iconsax.folder_open, title: 'Categories', route: CustomRoutes.categories),
+                      const CustomMenuItem(icon: Iconsax.box, title: 'Brands', route: CustomRoutes.brands), 
+                      const CustomMenuItem(icon: Iconsax.people, title: 'Customers', route: CustomRoutes.customers),
+                      const CustomMenuItem(icon: Iconsax.shopping_bag, title: 'Orders', route: CustomRoutes.orders),
+                      const CustomMenuItem(icon: Iconsax.cloud_snow, title: 'Coupons', route: CustomRoutes.coupons),                   
                     ],
                   ),
                 )
