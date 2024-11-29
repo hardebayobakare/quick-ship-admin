@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:quick_shop_admin/common/widgets/rounded_container.dart';
 import 'package:quick_shop_admin/features/dashboard/screens/widgets/dashboard_card.dart';
+import 'package:quick_shop_admin/features/dashboard/screens/widgets/order_status.dart';
+import 'package:quick_shop_admin/features/dashboard/screens/widgets/weekly_sales.dart';
 import 'package:quick_shop_admin/utils/constants/colors.dart';
 import 'package:quick_shop_admin/utils/constants/sizes.dart';
 import 'package:quick_shop_admin/utils/constants/text_strings.dart';
@@ -38,7 +41,20 @@ class DashboardTabletScreen extends StatelessWidget {
                 SizedBox(width: CustomSizes.spaceBtwItems),
                 Expanded(child: CustomDashboardCard(title: 'Visitors', subtitle: '22,521', stats: '2')),
               ],
-            )
+            ),
+            const SizedBox(height: CustomSizes.spaceBtwSections),
+
+            // Bar Graph
+            const CustomWeeklySalesGraph(),
+            const SizedBox(height: CustomSizes.spaceBtwSections),
+
+            // Orders
+            const CustomRoundedContainer(),
+            const SizedBox(height: CustomSizes.spaceBtwSections),
+
+            // Pie Chart
+            const CustomOrderStatusPieChart(),           
+            
           ],
         ),
       )

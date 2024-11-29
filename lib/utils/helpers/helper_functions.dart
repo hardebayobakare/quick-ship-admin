@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:quick_shop_admin/utils/constants/enums.dart';
 
 class CustomHelperFunctions {
   CustomHelperFunctions._();
@@ -9,6 +10,38 @@ class CustomHelperFunctions {
     final int daysUntilMonday = date.weekday - 1;
     final DateTime startOfWeek = date.subtract(Duration(days: daysUntilMonday));
     return DateTime(startOfWeek.year, startOfWeek.month, startOfWeek.day, 0, 0, 0, 0, 0);
+  }
+
+  static Color getStatusColor(OrderStatus value){
+    if (OrderStatus.pending == value){
+      return Colors.blue;
+    } else if (OrderStatus.processing == value){
+      return Colors.orange;
+    } else if (OrderStatus.shipped == value){
+      return Colors.purple;
+    } else if (OrderStatus.delivered == value){
+      return Colors.green;
+    } else if (OrderStatus.cancelled == value){
+      return Colors.red;
+    } else {
+      return Colors.grey;
+    }
+  }
+
+  static String getStatusString(OrderStatus value){
+    if (OrderStatus.pending == value){
+      return 'Pending';
+    } else if (OrderStatus.processing == value){
+      return 'Processing';
+    } else if (OrderStatus.shipped == value){
+      return 'Shipped';
+    } else if (OrderStatus.delivered == value){
+      return 'Delivered';
+    } else if (OrderStatus.cancelled == value){
+      return 'Cancelled';
+    } else {
+      return 'Unknown';
+    }
   }
 
   static Color? getColor(String value){

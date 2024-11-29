@@ -1,7 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:quick_shop_admin/features/orders/models/cart_item_model.dart';
-import 'package:quick_shop_admin/features/orders/models/payment_method_model.dart';
-import 'package:quick_shop_admin/features/personalization/models/address_model.dart';
 import 'package:quick_shop_admin/utils/constants/enums.dart';
 import 'package:quick_shop_admin/utils/constants/text_strings.dart';
 import 'package:quick_shop_admin/utils/helpers/helper_functions.dart';
@@ -9,23 +6,23 @@ import 'package:quick_shop_admin/utils/helpers/helper_functions.dart';
 
 class OrderModel {
   final String id;
-  final String userId;
-  final AddressModel? address;
-  final List<CartItemModel> cartItems;
+  // final String userId;
+  // final AddressModel? address;
+  // final List<CartItemModel> cartItems;
   final DateTime? deliveryDate;
   final DateTime orderDate;
-  final PaymentMethodModel paymentMethod;
+  // final PaymentMethodModel paymentMethod;
   final OrderStatus status;
   final double totalAmount;
 
 
   OrderModel({
     required this.id,
-    required this.userId,
-    required this.address,
-    required this.cartItems,
+    // required this.userId,
+    // required this.address,
+    // required this.cartItems,
     required this.orderDate,
-    required this.paymentMethod,
+    // required this.paymentMethod,
     required this.status,
     required this.totalAmount,
     this.deliveryDate,
@@ -44,11 +41,11 @@ class OrderModel {
   Map<String, dynamic> toJson() {
     return {
       'id': id,
-      'userId': userId,
-      'address': address?.toJson(),
-      'cartItems': cartItems.map((item) => item.toJson()).toList(),
+      // 'userId': userId,
+      // 'address': address?.toJson(),
+      // 'cartItems': cartItems.map((item) => item.toJson()).toList(),
       'orderDate': orderDate,
-      'paymentMethod': paymentMethod.toJson(),
+      // 'paymentMethod': paymentMethod.toJson(),
       'status': status.toString(),
       'totalAmount': totalAmount,
       'deliveryDate': deliveryDate,
@@ -60,11 +57,11 @@ class OrderModel {
 
     return OrderModel(
       id: data['id'] as String,
-      userId: data['userId'] as String,
-      address: AddressModel.fromMap(data['address'] as Map<String, dynamic>),
-      cartItems: (data['cartItems'] as List<dynamic>).map((item) => CartItemModel.fromJson(item as Map<String, dynamic>)).toList(),
+      // userId: data['userId'] as String,
+      // address: AddressModel.fromMap(data['address'] as Map<String, dynamic>),
+      // cartItems: (data['cartItems'] as List<dynamic>).map((item) => CartItemModel.fromJson(item as Map<String, dynamic>)).toList(),
       orderDate: (data['orderDate'] as Timestamp).toDate(),
-      paymentMethod: PaymentMethodModel.fromMap(data['paymentMethod'] as Map<String, dynamic>),
+      // paymentMethod: PaymentMethodModel.fromMap(data['paymentMethod'] as Map<String, dynamic>),
       status: OrderStatus.values.firstWhere((e) => e.toString() == data['status']),
       totalAmount: data['totalAmount'] as double,
       deliveryDate: data['deliveryDate'] != null ? (data['deliveryDate'] as Timestamp).toDate() : null,
