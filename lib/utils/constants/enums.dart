@@ -9,3 +9,5 @@ enum PaymentMethod { paypal, googlePay, applePay, visa, masterCard, paystack, ra
 enum ImageType { network, asset, file, memory }
 
 enum AppRole { admin, user }
+
+enum MediaCategory { folders, banners, brands, categories, products, users}

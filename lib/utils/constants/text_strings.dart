@@ -169,6 +169,13 @@ class CustomTextStrings {
   static const String totalOrder = 'Total Order';
   static const String visitors = 'Visitors';
   static const String weeklySales = 'Weekly Sales';
+  static const String uploadImages = 'Upload Images';
+  static const String dragAndDropImages = 'Drag and drop images here';
+  static const String selectImages = 'Select Images';
+  static const String selectFolder = 'Select Folder';
+  static const String removeAll = 'Remove All';
+  static const String upload = 'Upload';
+  static const String loadMore = 'Load More';
 
 
 
@@ -186,6 +193,7 @@ class CustomTextStrings {
 
   // Local Storage keys
   static const String cartItems = 'CARTITEMS';
+
 
 
 }
