@@ -8,8 +8,6 @@ class MediaScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return const CustomSiteLayout(
       desktop: MediaDesktopScreen(),
-      // tablet: MediaTabletScreen(),
-      // mobile: MediaMobileScreen(),
     );
   }
 }
