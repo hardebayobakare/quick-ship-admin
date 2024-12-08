@@ -17,6 +17,14 @@ class CustomTextStrings {
   static const String onBoardingSubtitle2 = 'Pay with your preferred payment method';
   static const String onBoardingSubtitle3 = 'Deliver at your door step';
 
+  // -- Storage Paths
+  static const String bannersStoragePath = '/Banners/Images';
+  static const String productsStoragePath = '/Products/Images';
+  static const String brandsStoragePath = '/Brands/Images';
+  static const String categoriesStoragePath = '/Categories/Images';
+  static const String usersStoragePath = '/Users/Images';
+  static const String othersStoragePath = '/Orders/Images';
+
   // -- Authentication Form Texts
   static const String firstName = 'First Name';
   static const String lastName = 'Last Name';
@@ -176,6 +184,9 @@ class CustomTextStrings {
   static const String removeAll = 'Remove All';
   static const String upload = 'Upload';
   static const String loadMore = 'Load More';
+  static const String selectUploadFolder = 'Please select a folder to upload images';
+  static const String uploadImagesConfirmation = 'Are you sure you want to upload these images in ';
+  static const String generalError = "Something went wrong. Please try again later.";
 
 
 

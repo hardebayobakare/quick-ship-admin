@@ -1,3 +1,7 @@
+import 'dart:typed_data';
+import 'package:universal_html/html.dart' as html;
+
+import 'package:quick_shop_admin/features/media/models/image_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dropzone/flutter_dropzone.dart';
 import 'package:get/get.dart';
@@ -46,9 +50,23 @@ class CustomMediaUploader extends StatelessWidget {
                             onHover: () => print('Zone hover'),
                             onLeave: () => print('Zone leave'),
                             onCreated: (ctrl) => controller.dropzoneViewController = ctrl,
-                            onDropFile: (file) {},
+                            onDropFile: (file) async {
+                              final bytes = await controller.dropzoneViewController.getFileData(file);
+                              final String fileName = await controller.dropzoneViewController.getFilename(file);
+                              final String mimeType = await controller.dropzoneViewController.getFileMIME(file);
+                              html.File htmlFile = html.File([bytes], fileName, {'type': mimeType});
+                              final image = ImageModel(
+                                url: '',
+                                file: htmlFile,
+                                folder: '',
+                                filename: file.name,
+                                localImageToDisplay: Uint8List.fromList(bytes)
+                              );
+                              controller.selectedImagesToUpload.add(image);
+
+                            },
                             onDropInvalid: (value) => print('Invalid file: $value'),
-                            onDropFiles: (value) => print('Multiple files: $value'),
+                            onDropFiles: (value) => print('Files $value'),
                           ),
         
                           Column(
@@ -57,7 +75,7 @@ class CustomMediaUploader extends StatelessWidget {
                               const SizedBox(height: CustomSizes.spaceBtwItems),
                               const Text(CustomTextStrings.dragAndDropImages),
                               const SizedBox(height: CustomSizes.spaceBtwItems),
-                              OutlinedButton(onPressed: () {}, child: const Text(CustomTextStrings.selectImages))
+                              OutlinedButton(onPressed: () => controller.selectLocalImages(), child: const Text(CustomTextStrings.selectImages))
                             ],
                           )
                         ],
@@ -70,108 +88,78 @@ class CustomMediaUploader extends StatelessWidget {
               const SizedBox(height: CustomSizes.spaceBtwItems),
           
               // Locally selected Images
-              CustomRoundedContainer(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        // Folders DropDown
-                        Row(
-                          children: [
-                            Text(CustomTextStrings.selectFolder, style: Theme.of(context).textTheme.headlineSmall),
-                            const SizedBox(width: CustomSizes.spaceBtwItems),
-                            CustomMediaFoldersDropDown(onChanged: (MediaCategory? value) {
-                              if(value != null){
-                                controller.selectedCategory.value = value;
-                              }
-                            }),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            TextButton(onPressed: () {}, child: const Text(CustomTextStrings.removeAll)),
-                            const SizedBox(width: CustomSizes.spaceBtwItems),
-                            DeviceUtils.isMobileScreen(context) 
-                              ? const SizedBox.shrink() 
-                              : SizedBox(
-                                  width: CustomSizes.buttonWidth,
-                                  child: ElevatedButton(
-                                    onPressed: () {}, 
-                                    child: const Text(CustomTextStrings.upload),
-                                  ),
-                                )
-                            
-                          ],
-                        ),
-                        
-                      ],
-                    ),
-          
-                    const SizedBox(height: CustomSizes.spaceBtwSections),
-          
-                    const Wrap(
-                      alignment: WrapAlignment.start,
-                      spacing: CustomSizes.spaceBtwItems / 2,
-                      runSpacing: CustomSizes.spaceBtwItems / 2,
-                      children: [
-                        CustomRoundedImage(
-                          width: 90,
-                          height: 90,
-                          padding: CustomSizes.sm,
-                          imageType: ImageType.asset,
-                          image: CustomImages.shoeIcon,
-                          backgroundColor: CustomColors.primaryBackground,
-                        ),
-                        CustomRoundedImage(
-                          width: 90,
-                          height: 90,
-                          padding: CustomSizes.sm,
-                          imageType: ImageType.asset,
-                          image: CustomImages.toyIcon,
-                          backgroundColor: CustomColors.primaryBackground,
-                        ),
-                        CustomRoundedImage(
-                          width: 90,
-                          height: 90,
-                          padding: CustomSizes.sm,
-                          imageType: ImageType.asset,
-                          image: CustomImages.electronicsIcon,
-                          backgroundColor: CustomColors.primaryBackground,
-                        ),
-                        CustomRoundedImage(
-                          width: 90,
-                          height: 90,
-                          padding: CustomSizes.sm,
-                          imageType: ImageType.asset,
-                          image: CustomImages.furnitureIcon,
-                          backgroundColor: CustomColors.primaryBackground,
-                        ),
-                        CustomRoundedImage(
-                          width: 90,
-                          height: 90,
-                          padding: CustomSizes.sm,
-                          imageType: ImageType.asset,
-                          image: CustomImages.clothIcon,
-                          backgroundColor: CustomColors.primaryBackground,
-                        ),
-                      ],
-                    ),
-          
-                    const SizedBox(height: CustomSizes.spaceBtwSections),
-                    DeviceUtils.isMobileScreen(context) 
-                      ? SizedBox(
-                          width: double.infinity,
-                          child: ElevatedButton(
-                            onPressed: () {}, 
-                            child: const Text(CustomTextStrings.upload),
+              if (controller.selectedImagesToUpload.isNotEmpty)
+                CustomRoundedContainer(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          // Folders DropDown
+                          Row(
+                            children: [
+                              Text(CustomTextStrings.selectFolder, style: Theme.of(context).textTheme.headlineSmall),
+                              const SizedBox(width: CustomSizes.spaceBtwItems),
+                              CustomMediaFoldersDropDown(onChanged: (MediaCategory? value) {
+                                if(value != null){
+                                  controller.selectedCategory.value = value;
+                                }
+                              }),
+                            ],
                           ),
-                        )
-                      : const SizedBox.shrink()
-                  ],
-                ),
-              )
+                          Row(
+                            children: [
+                              TextButton(onPressed: () => controller.selectedImagesToUpload.clear(), child: const Text(CustomTextStrings.removeAll)),
+                              const SizedBox(width: CustomSizes.spaceBtwItems),
+                              DeviceUtils.isMobileScreen(context) 
+                                ? const SizedBox.shrink() 
+                                : SizedBox(
+                                    width: CustomSizes.buttonWidth,
+                                    child: ElevatedButton(
+                                      onPressed: () => controller.uploadImagesConfirmation(), 
+                                      child: const Text(CustomTextStrings.upload),
+                                    ),
+                                  )
+                              
+                            ],
+                          ),
+                          
+                        ],
+                      ),
+            
+                      const SizedBox(height: CustomSizes.spaceBtwSections),
+            
+                      Wrap(
+                        alignment: WrapAlignment.start,
+                        spacing: CustomSizes.spaceBtwItems / 2,
+                        runSpacing: CustomSizes.spaceBtwItems / 2,
+                        children: controller.selectedImagesToUpload.where((image) => image.localImageToDisplay != null).map((image) {
+                          return CustomRoundedImage(
+                            memoryImage: image.localImageToDisplay,
+                            imageType: ImageType.memory,
+                            width: 90,
+                            height: 90,
+                            padding: CustomSizes.sm,
+                            backgroundColor: CustomColors.primaryBackground,
+                            onTap: () {},
+                          );
+                        }).toList(),
+                      ),
+            
+                      const SizedBox(height: CustomSizes.spaceBtwSections),
+                      DeviceUtils.isMobileScreen(context) 
+                        ? SizedBox(
+                            width: double.infinity,
+                            child: ElevatedButton(
+                              onPressed: () => controller.uploadImagesConfirmation(), 
+                              child: const Text(CustomTextStrings.upload),
+                            ),
+                          )
+                        : const SizedBox.shrink()
+                    ],
+                  ),
+                )
             ],
           )
         : const SizedBox.shrink(),
