@@ -60,6 +60,7 @@ class CustomTextStrings {
   static const String delete = 'Delete';
   static const String cancel = 'Cancel';
   static const String verifyingAccount = 'Verifying your account...';
+  static const String deletingImage= 'Deleting Image...';
   static const String processing = 'Processing';
   static const String streetAddress = 'Street Address';
   static const String postalCode = 'Postal Code';
@@ -68,6 +69,8 @@ class CustomTextStrings {
   static const String country = 'Country';
   static const String save = 'Save';
   static const String sales = 'Sales';
+  static const String imageDeleted = 'Image Deleted';
+  static const String imageDeletedMessage = 'The image has been deleted successfully.';
 
 
   // -- Authentication Heading Texts
@@ -180,14 +183,20 @@ class CustomTextStrings {
   static const String uploadImages = 'Upload Images';
   static const String dragAndDropImages = 'Drag and drop images here';
   static const String selectImages = 'Select Images';
-  static const String selectFolder = 'Select Folder';
+  static const String selectFolder = 'Select a folder';
   static const String removeAll = 'Remove All';
   static const String upload = 'Upload';
   static const String loadMore = 'Load More';
   static const String selectUploadFolder = 'Please select a folder to upload images';
   static const String uploadImagesConfirmation = 'Are you sure you want to upload these images in ';
   static const String generalError = "Something went wrong. Please try again later.";
-
+  static const String folderIsEmpty = 'This folder is empty';
+  static const String imageUrl = 'Image URL';
+  static const String urlCopied = 'URL copied to clipboard';
+  static const String copyUrl = 'Copy Url';
+  static const String deleteImage = 'Delete Image';
+  static const String imageName = 'Image Name';
+  static const String deleteImageConfirmation = 'Are you sure you want to delete this image?';
 
 
 
