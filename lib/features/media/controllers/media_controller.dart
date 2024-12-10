@@ -1,5 +1,9 @@
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
+import 'package:quick_shop_admin/features/media/widgets/media_content.dart';
+import 'package:quick_shop_admin/features/media/widgets/media_uploader.dart';
+import 'package:quick_shop_admin/utils/constants/colors.dart';
+import 'package:quick_shop_admin/utils/constants/sizes.dart';
 import 'package:quick_shop_admin/utils/loaders/circular_loader.dart';
 import 'package:universal_html/html.dart';
 
@@ -285,4 +289,30 @@ class MediaController extends GetxController{
     }
   }
 
+  Future<List<ImageModel>?> selectedImagesForMedia({List<String>? selectedUrls, bool allowSelection = true, bool multipleSelection = false}) async {
+    showImageUploaderSection.value = true;
+
+    List<ImageModel>? selectedImages = await Get.bottomSheet<List<ImageModel>>(
+      isScrollControlled: true,
+      backgroundColor: CustomColors.primaryBackground,
+      FractionallySizedBox(
+        heightFactor: 1,
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(CustomSizes.defaultSpace),
+            child: Column(
+              children: [
+                const CustomMediaUploader(),
+                CustomMediaContent(allowSelection: allowSelection, 
+                allMultipleSelection: multipleSelection,
+                alreadySelectedImageUrls: selectedUrls ?? [],)
+              ],
+            ),
+          ),
+        ),
+      )
+    );
+
+    return selectedImages;
+  }
 }

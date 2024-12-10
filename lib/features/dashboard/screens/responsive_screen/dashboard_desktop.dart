@@ -27,7 +27,6 @@ class DashboardDesktopScreen extends StatelessWidget {
                 style: Theme.of(context).textTheme.headlineLarge,
               ),
               const SizedBox(height: CustomSizes.spaceBtwSections),
-
               // Cards
               const Row(
                 children: [

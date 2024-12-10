@@ -15,10 +15,23 @@ import 'package:quick_shop_admin/utils/loaders/animation_loader.dart';
 import 'package:quick_shop_admin/utils/loaders/loader_animation.dart';
 
 class CustomMediaContent extends StatelessWidget {
-  const CustomMediaContent({super.key});
+  CustomMediaContent({
+    super.key,
+    required this.allowSelection,
+    required this.allMultipleSelection,
+    this.alreadySelectedImageUrls,
+    this.onImageSelected,
+  });
+
+  final bool allowSelection;
+  final bool allMultipleSelection;
+  final List<String>? alreadySelectedImageUrls;
+  final List<ImageModel> selectedImages = [];
+  final Function(List<ImageModel> selectedImages)? onImageSelected;
 
   @override
   Widget build(BuildContext context) {
+    bool loadingPreviousImages = false;
     final controller = MediaController.instance;
     return CustomRoundedContainer(
       child: Column(
@@ -26,15 +39,22 @@ class CustomMediaContent extends StatelessWidget {
         children: [
           // Meida Images Header
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(CustomTextStrings.selectFolder, style: Theme.of(context).textTheme.headlineSmall),
-              const SizedBox(width: CustomSizes.spaceBtwItems),
-              CustomMediaFoldersDropDown(onChanged: (MediaCategory? value) {
-                if(value != null){
-                  controller.selectedCategory.value = value;
-                  controller.getMediaImages();
-                }
-              }),
+              Row(
+                children: [
+                  Text(CustomTextStrings.selectFolder, style: Theme.of(context).textTheme.headlineSmall),
+                  const SizedBox(width: CustomSizes.spaceBtwItems),
+                  CustomMediaFoldersDropDown(onChanged: (MediaCategory? value) {
+                    if(value != null){
+                      controller.selectedCategory.value = value;
+                      controller.getMediaImages();
+                    }
+                  }),
+                ],
+              ),
+
+              if (allowSelection) buildAddSelectedImagesButton(),
             ],
           ),
           const SizedBox(height: CustomSizes.spaceBtwSections),
@@ -42,6 +62,23 @@ class CustomMediaContent extends StatelessWidget {
           Obx(
             () {
               List<ImageModel> images = _getSelectedFolderImages(controller);
+
+              if (!loadingPreviousImages){
+                if (alreadySelectedImageUrls != null && alreadySelectedImageUrls!.isNotEmpty) {
+                final selectedUrlSet = Set<String>.from(alreadySelectedImageUrls!);
+                for (var image in images) {
+                  image.isSelected.value = selectedUrlSet.contains(image.url);
+                  if (image.isSelected.value) {
+                    selectedImages.add(image);
+                  }
+                }
+                } else {
+                  for (var image in images) {
+                    image.isSelected.value = false;
+                  }
+                }
+                loadingPreviousImages = true;
+              } 
 
               if (controller.loading.value && images.isEmpty) {
                 return const CustomLoaderAnimation();
@@ -69,7 +106,7 @@ class CustomMediaContent extends StatelessWidget {
                         height: 180,
                         child: Column(
                           children: [
-                            _buildSimpleListImage(image),
+                            allowSelection ? _buildListImageWithCheckbox(image) :_buildSimpleListImage(image),
                             Expanded(
                               child: Padding(
                                 padding: const EdgeInsets.symmetric(horizontal: CustomSizes.sm),
@@ -153,6 +190,50 @@ class CustomMediaContent extends StatelessWidget {
       fit: BoxFit.cover,
     );
   }
+
+  _buildListImageWithCheckbox(ImageModel image) {
+    return Stack(
+      children: [
+        CustomRoundedImage(
+          isNetworkImage: true,
+          imageType: ImageType.network,
+          image:image.url,
+          height: 140,
+          width: 140,
+          fit: BoxFit.cover,
+          padding: CustomSizes.sm,
+          margin: CustomSizes.spaceBtwItems / 2,
+        ),
+        Positioned(
+          top: CustomSizes.md,
+          right: CustomSizes.md,
+          child: Obx(
+            () => Checkbox(
+              value: image.isSelected.value,
+              onChanged: (value) {
+                if (value != null) {
+                  image.isSelected.value = value;
+                  if (value) {
+                    if(!allMultipleSelection){
+                      for (var img in selectedImages) {
+                        if (img != image) {
+                          img.isSelected.value = false;
+                        } 
+                      }
+                      selectedImages.clear();
+                    }
+                    selectedImages.add(image);
+                  } else {
+                    selectedImages.remove(image);
+                  }
+                }
+              }
+            ),
+          ),
+        ),
+      ],
+    );
+  }
   
   Widget _buildSelectFolderAnimationWidget(BuildContext context) {
     return Padding(
@@ -165,6 +246,27 @@ class CustomMediaContent extends StatelessWidget {
         showAction: false,
         style: Theme.of(context).textTheme.titleLarge,
       ),
+    );
+  }
+  
+  Widget buildAddSelectedImagesButton() {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        SizedBox(
+          width: 120,
+          child: OutlinedButton.icon(onPressed: () => Get.back(), label: const Text(CustomTextStrings.close), icon: const Icon(Iconsax.close_circle)),
+        ), 
+        const SizedBox(width: CustomSizes.spaceBtwItems),
+        SizedBox(
+          width: 120,
+          child: ElevatedButton.icon(
+            onPressed: () => Get.back(result: selectedImages),
+            label: const Text('Add'),
+            icon: const Icon(Iconsax.image),
+          ),
+        ),
+      ],
     );
   }
 }

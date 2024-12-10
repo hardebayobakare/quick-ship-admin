@@ -47,7 +47,10 @@ class MediaDesktopScreen extends StatelessWidget {
               const SizedBox(height: CustomSizes.spaceBtwSections),
 
               // Media Content
-              const CustomMediaContent(),
+              CustomMediaContent(
+                allowSelection: false,
+                allMultipleSelection: false,
+              ),
             ],
           ),
         ),

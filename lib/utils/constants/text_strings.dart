@@ -197,6 +197,7 @@ class CustomTextStrings {
   static const String deleteImage = 'Delete Image';
   static const String imageName = 'Image Name';
   static const String deleteImageConfirmation = 'Are you sure you want to delete this image?';
+  static const String close = 'Close';
 
 
 
