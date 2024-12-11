@@ -7,6 +7,8 @@ class CustomRoutes {
   static const banners = '/banners';
   static const products = '/products';
   static const categories = '/categories';
+  static const createCategory = '/create-category';
+  static const editCategory = '/edit-category';
   static const brands = '/brands';
   static const orders = '/orders';
   static const customers = '/customers';

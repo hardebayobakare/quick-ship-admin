@@ -130,6 +130,7 @@ class CustomImages {
 
   // -- Content Images
   static const String defaultMultipleImageIcon = "assets/images/content/multiple-images.png";
+  static const String defaultImage = "assets/images/content/default-image.png";
 
   // - Review Profile Images
   static const String userProfileImage1 = "assets/images/reviews/review_profile_image_1.jpg";

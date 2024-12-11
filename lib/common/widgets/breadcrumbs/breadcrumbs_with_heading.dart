@@ -30,7 +30,7 @@ class CustomBreadCrumbsWithHeading extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            if (returnToPreviousScreen) IconButton(onPressed: () => Get.back, icon: const Icon(Iconsax.arrow_left)),
+            if (returnToPreviousScreen) IconButton(onPressed: () => Get.back(), icon: const Icon(Iconsax.arrow_left)),
             if (returnToPreviousScreen)  const SizedBox(width: CustomSizes.spaceBtwItems),
             CustomPageHeading(
               heading: heading,

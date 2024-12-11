@@ -198,6 +198,13 @@ class CustomTextStrings {
   static const String imageName = 'Image Name';
   static const String deleteImageConfirmation = 'Are you sure you want to delete this image?';
   static const String close = 'Close';
+  static const String createNewCategory = 'Create New Category';
+  static const String searchCategory = 'Search Category';
+  static const String createCategory = 'Create Category';
+  static const String categoryName = 'Category Name';
+  static const String create = 'Create';
+  static const String updateCategory = 'Update Category';
+
 
 
 
@@ -214,6 +221,22 @@ class CustomTextStrings {
 
   // Local Storage keys
   static const String cartItems = 'CARTITEMS';
+
+
+  // -- Pages
+  static const String categories = 'Categories';
+
+
+  // -- Data Table Column Names
+  static const String orderId = 'Order ID';
+  static const String date = 'Date';
+  static const String items = 'Items';
+  static const String status = 'Status';
+  static const String amount = 'Amount';
+  static const String actions = 'Actions';
+  static const String category = 'Category';
+  static const String parentCategory = 'Parent Category';
+  static const String featured = 'Featured';
 
 
 

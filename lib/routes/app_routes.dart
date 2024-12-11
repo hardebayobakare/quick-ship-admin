@@ -3,6 +3,9 @@ import 'package:quick_shop_admin/features/authentication/screens/forget_password
 import 'package:quick_shop_admin/features/authentication/screens/login/login.dart';
 import 'package:quick_shop_admin/features/authentication/screens/reset_password/reset_password.dart';
 import 'package:quick_shop_admin/features/banners/screens/banners.dart';
+import 'package:quick_shop_admin/features/categories/screens/all_categories/categories.dart';
+import 'package:quick_shop_admin/features/categories/screens/create_category/create_category.dart';
+import 'package:quick_shop_admin/features/categories/screens/edit_category/edit_category.dart';
 import 'package:quick_shop_admin/features/dashboard/screens/dashboard.dart';
 import 'package:quick_shop_admin/features/media/screens/media.dart';
 import 'package:quick_shop_admin/features/products/screens/products.dart';
@@ -19,6 +22,10 @@ class CustomAppRoutes {
     GetPage(name: CustomRoutes.banners, page: () => const BannersScreen(), middlewares: [CustomRouteMiddleware()]),
     GetPage(name: CustomRoutes.products, page: () => const ProductsScreen(), middlewares: [CustomRouteMiddleware()]),
     
+    // Categories
+    GetPage(name: CustomRoutes.categories, page: () => const CategoriesScreen(), middlewares: [CustomRouteMiddleware()]),
+    GetPage(name: CustomRoutes.createCategory, page: () => const CreateCategoryScreen(), middlewares: [CustomRouteMiddleware()]),
+    GetPage(name: CustomRoutes.editCategory, page: () => const EditCategoryScreen(), middlewares: [CustomRouteMiddleware()]),
 
     // Produts
     // GetPage(name: CustomRoutes.banners, page: () => const ProductsScreen()),
