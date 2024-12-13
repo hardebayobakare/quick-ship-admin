@@ -10,6 +10,8 @@ class CustomRoutes {
   static const createCategory = '/create-category';
   static const editCategory = '/edit-category';
   static const brands = '/brands';
+  static const createBrand = '/create-brand';
+  static const editBrand = '/edit-brand';
   static const orders = '/orders';
   static const customers = '/customers';
   static const coupons = '/coupons';

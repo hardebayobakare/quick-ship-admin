@@ -204,6 +204,12 @@ class CustomTextStrings {
   static const String categoryName = 'Category Name';
   static const String create = 'Create';
   static const String updateCategory = 'Update Category';
+  static const String createBrand = 'Create Brand';
+  static const String updateBrand = 'Update Brand';
+  static const String createNewBrand = 'Create New Brand';
+  static const String searchBrand = 'Search Brand';
+  static const String brandName = 'Brand Name';
+  static const String selectCateories = 'Select Categories';
 
 
 

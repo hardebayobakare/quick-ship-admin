@@ -3,14 +3,14 @@ import 'package:get/get.dart';
 import 'package:quick_shop_admin/common/widgets/breadcrumbs/breadcrumbs_with_heading.dart';
 import 'package:quick_shop_admin/common/widgets/rounded_container.dart';
 import 'package:quick_shop_admin/common/widgets/table_header.dart';
-import 'package:quick_shop_admin/features/categories/screens/all_categories/table/data_table.dart';
+import 'package:quick_shop_admin/features/brands/screens/all_brands/tables/data_table.dart';
 import 'package:quick_shop_admin/routes/route.dart';
 import 'package:quick_shop_admin/utils/constants/colors.dart';
 import 'package:quick_shop_admin/utils/constants/sizes.dart';
 import 'package:quick_shop_admin/utils/constants/text_strings.dart';
 
-class CategoryDesktopScreen extends StatelessWidget {
-  const CategoryDesktopScreen({super.key});
+class BrandDesktopScreen extends StatelessWidget {
+  const BrandDesktopScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,23 +25,22 @@ class CategoryDesktopScreen extends StatelessWidget {
               const Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  CustomBreadCrumbsWithHeading(heading: CustomTextStrings.categories, breadcrumbs: [CustomTextStrings.categories]),
+                  CustomBreadCrumbsWithHeading(heading: CustomTextStrings.brands, breadcrumbs: [CustomTextStrings.brands]),
                 ],
               ),
               const SizedBox(height: CustomSizes.spaceBtwSections),
 
-              // Body
               CustomRoundedContainer(
                 child: Column(
                   children: [
                     CustomTableHeader(
-                      onPressed: () => Get.toNamed(CustomRoutes.createCategory), 
-                      buttonText: CustomTextStrings.createNewCategory,
-                      searchHintText: CustomTextStrings.searchCategory,
+                      onPressed: () => Get.toNamed(CustomRoutes.createBrand), 
+                      buttonText: CustomTextStrings.createNewBrand,
+                      searchHintText: CustomTextStrings.searchBrand,
                     ),
                     const SizedBox(height: CustomSizes.spaceBtwItems),
 
-                    const CategoryTable()
+                    BrandTable()
                   ],
                 ),
               )

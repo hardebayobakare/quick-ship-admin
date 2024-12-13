@@ -7,23 +7,28 @@ class CustomCircularIcon extends StatelessWidget {
     this.onPressed,
     this.size,
     this.color,
+    this.backgroundColor,
     required this.icon,
   });
 
   final void Function()? onPressed;
   final double? size;
   final Color? color;
-  final Icon icon;
+  final IconData icon;
+  final Color? backgroundColor;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(CustomSizes.xs),
-      child: IconButton(
-        icon: icon,
-        onPressed: onPressed,
-        iconSize: size,
-        color: color,
+      child: Container(
+        width: CustomSizes.iconMd,
+        height: CustomSizes.iconMd,
+        decoration: BoxDecoration(
+          color: backgroundColor,
+          shape: BoxShape.circle,
+        ),
+        child: Icon(icon, size: size, color: color),
       ),
     );
   }

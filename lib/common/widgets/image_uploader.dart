@@ -70,7 +70,8 @@ class CustomImageUploader extends StatelessWidget {
             onPressed: onIconButtonPressed,
             size: CustomSizes.md,
             color: Colors.white,
-            icon: Icon(icon, color: CustomColors.primaryColor.withOpacity(0.9)),
+            icon: icon,
+            backgroundColor: CustomColors.primaryColor.withOpacity(0.9),
           ),
         )
       ],
