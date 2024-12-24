@@ -198,6 +198,7 @@ class CustomTextStrings {
   static const String imageName = 'Image Name';
   static const String deleteImageConfirmation = 'Are you sure you want to delete this image?';
   static const String close = 'Close';
+  static const String active = 'Active';
   static const String createNewCategory = 'Create New Category';
   static const String searchCategory = 'Search Category';
   static const String createCategory = 'Create Category';
@@ -210,6 +211,14 @@ class CustomTextStrings {
   static const String searchBrand = 'Search Brand';
   static const String brandName = 'Brand Name';
   static const String selectCateories = 'Select Categories';
+  static const String banners = 'Banners';
+  static const String createNewBanner = 'Create New Banner';
+  static const String searchBanners = 'Search Banners';
+  static const String createBanner = 'Create Banner';
+  static const String selectImage = 'Select Image';
+  static const String changeImage = 'Change Image';
+  static const String updateBanner = 'Update Banner';
+  static const String makeBannerActive = 'Make Banner Active or Inactive';
 
 
 

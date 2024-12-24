@@ -5,7 +5,11 @@ class CustomRoutes {
   static const dashboard = '/';
   static const media = '/media';
   static const banners = '/banners';
+  static const createBanner = '/create-banner';
+  static const editBanner = '/edit-banner';
   static const products = '/products';
+  static const createProduct = '/create-product';
+  static const editProduct = '/edit-product';
   static const categories = '/categories';
   static const createCategory = '/create-category';
   static const editCategory = '/edit-category';
